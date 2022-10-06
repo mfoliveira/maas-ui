@@ -37,8 +37,10 @@ jobs:
       - name: Install
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: CYPRESS_INSTALL_BINARY=0 yarn install
+      - name: "Build UI"
+        run: "yarn build"
       - name: Run Cypress tests without a user
-        run: yarn start-server-and-test start http://localhost:8400 cypress-run-no-users
+        run: yarn start-server-and-test serve-static-demo-default-proxy http://localhost:8400 cypress-run-no-users
       - name: Create MAAS admin
         run: sudo maas createadmin --username=admin --password=test --email=fake@example.org
       - name: Create MAAS non-admin user
@@ -47,7 +49,7 @@ jobs:
           maas login admin http://localhost:5240/MAAS $API_KEY
           maas admin users create username=user password=test email=fake-user@example.org is_superuser=0
       - name: Run Cypress tests with a user
-        run: yarn start-server-and-test start http://localhost:8400 cypress-run-with-users
+        run: yarn start-server-and-test serve-static-demo-default-proxy http://localhost:8400 cypress-run-with-users
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
