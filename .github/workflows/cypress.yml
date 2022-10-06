@@ -20,6 +20,8 @@ jobs:
           sudo snap install maas-test-db --channel=latest/edge
       - name: Initialise MAAS
         run: sudo maas init region+rack --maas-url=${{env.MAAS_URL}}/MAAS --database-uri maas-test-db:///
+      - name: Install Cypress
+        uses: cypress-io/github-action@v4
       - name: Restore node_modules
         id: yarn-cache
         uses: actions/cache@v3
