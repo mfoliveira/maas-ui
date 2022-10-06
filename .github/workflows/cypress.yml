@@ -22,6 +22,8 @@ jobs:
         run: sudo maas init region+rack --maas-url=${{env.MAAS_URL}}/MAAS --database-uri maas-test-db:///
       - name: Install Cypress
         uses: cypress-io/github-action@v4
+        with:
+          runTests: false
       - name: Restore node_modules
         id: yarn-cache
         uses: actions/cache@v3
