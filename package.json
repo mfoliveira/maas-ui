@@ -86,7 +86,7 @@
     "@types/classnames": "2.3.0",
     "@types/clone-deep": "4.0.1",
     "@types/enzyme": "3.10.12",
-    "@types/jest": "27.5.2",
+    "@types/jest": "29.5.1",
     "@types/node": "18.14.2",
     "@types/path-parse": "1.0.19",
     "@types/pluralize": "0.0.29",
